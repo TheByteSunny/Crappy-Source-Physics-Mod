@@ -32,7 +32,7 @@
 
 
 // Half-Life Server Configuration Layout Script (stores last settings chosen, too)
-// File generated:  Fri Apr 02 07:04:35 PM
+// File generated:  Mon Jan 19 10:54:45 PM
 //
 //
 // Cvar	-	Setting
@@ -41,91 +41,99 @@ VERSION 1.0
 
 DESCRIPTION SERVER_OPTIONS
 {
-	"hostname"
+	"name"
 	{
-		"#Valve_Hostname"
+		"Player Name"
 		{ STRING }
-		{ "Half-Life 2 Sandbox" }
+		{ "Player" }
 	}
 
-// 	"gamemode"
-// 	{
-// 		"#Hl2sb_Gamemode"
-// 		{
-// 			LIST
-// 			"#Hl2sb_Sandbox" "sandbox"
-// 			"#Hl2sb_Campaign" "campaign"
-// 			"#Hl2sb_Deathmatch" "deathmatch"
-// 		}
-// 		{ "0" }
-// 	}
+   "cl_playermodel"
+	{
+		"Player Model"
+		{ STRING }
+		{ "models/player/gman_high.mdl" }
+	}
+
+	"hostname"
+	{
+		"Server Name"
+		{ STRING }
+		{ "Half-Life 2: Sandbox Ressurected" }
+	}
+
+   "gamemode"
+	{
+   		"Gamemode"
+   		{
+   			LIST
+   			"Sandbox" "rsandbox"
+   			"Deathmatch" "deathmatch"
+   		}
+ 		{ "0" }
+	}
 
 	"sv_password"
 	{
-		"#Valve_Server_Password"
+		"Password"
 		{ STRING }
 		{ "" }
 	}
 
 	"maxplayers"
 	{
-		"#Valve_Max_Players"
+		"Max Players"
 		{ NUMBER 1 32 }
-		{ "32" }
-	}
-
-	"sv_password"
-	{
-		"#Valve_Server_Password"
-		{ STRING }
-		{ "" }
+		{ "1" }
 	}
 
 	"mp_timelimit"
 	{
-		"#Valve_Time_Limit"
-		{ NUMBER 0.000000 -1.000000 }
-		{ "0.000000" }
+		"Time Limit"
+		{ NUMBER 0 -1 }
+		{ "0" }
 	}
 
 	"mp_fraglimit"
 	{
-		"#Valve_Frag_Limit"
-		{ NUMBER 0.000000 -1.000000 }
-		{ "0.000000" }
+		"Frag Limit"
+		{ NUMBER 0 -1 }
+		{ "0" }
 	}
 
 	"mp_teamplay"
 	{
-		"#Valve_Teamplay"
+		"Team Play"
 		{ BOOL }
 		{ "0" }
 	}
 
 	"mp_weaponstay"
 	{
-		"#Valve_Weapons_Stay"
+		"Weapons Stay"
 		{ BOOL }
 		{ "0" }
 	}
 
 	"mp_footsteps"
 	{
-		"#Valve_Footsteps"
+		"Footsteps"
 		{ BOOL }
 		{ "1" }
 	}
 
 	"mp_flashlight"
 	{
-		"#Valve_Flashlight"
+		"Flashlight"
 		{ BOOL }
-		{ "0" }
+		{ "1" }
 	}
+
 	"mp_forcerespawn"
 	{
-		"#Valve_Force_Respawn"
+		"Force Respawn"
 		{ BOOL }
 		{ "0" }
 	}
+
 }

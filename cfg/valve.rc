@@ -1,5 +1,5 @@
 // load the base configuration
-//exec default.cfg
+//exec config.cfg
 // Setup custom controller
 exec joystick.cfg
 
@@ -11,6 +11,6 @@ exec autoexec.cfg
 //
 stuffcmds
 
-hostname "Half-Life 2 Sandbox"
+hostname "Half-Life 2 Sandbox: Ressurected"
 
 mp_forcerespawn 0
