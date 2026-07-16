@@ -1,45 +1,83 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose:
---
---===========================================================================--
-
-if ( not bit ) then
-  require( "bit" )
-end
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
 include( "shared.lua" )
-include( "in_main.lua" )
-include( "scripted_controls/buildmenu.lua" )
+include( "function.lua" )
 
-local bor = bit.bor
-local FONTFLAG_ANTIALIAS = _E.FONTFLAG.ANTIALIAS
-local FONTFLAG_ADDITIVE = _E.FONTFLAG.ADDITIVE
-local FONTFLAG_CUSTOM = _E.FONTFLAG.CUSTOM
+require("spaint")
 
-function GM:CreateDefaultPanels()
-  gBuildMenuInterface = vgui.CBuildMenu( VGui_GetClientLuaRootPanel(), "build" )
+Timer = require("timer")
+Net = require("net")
 
-  surface.AddCustomFontFile( "DIN-Light", "gamemodes/sandbox/content/resource/DINLi.ttf" )
+spaint.CreateFont("TestFont", {
+    font = "Roboto",
+    size = 29,
+    weight = 600,
+    antialias = true,
+    shadow = false
+})
 
-  gBuildMenuInterface.m_hFonts[ "BuildMenuTextLarge" ] = surface.CreateFont()
-  surface.SetFontGlyphSet(
-    gBuildMenuInterface.m_hFonts[ "BuildMenuTextLarge" ],
-    "DIN-Light",
-    64,
-    0,
-    0,
-    0,
-    bor( FONTFLAG_ANTIALIAS, FONTFLAG_ADDITIVE, FONTFLAG_CUSTOM )
-  )
-  gBuildMenuInterface.m_hFonts[ "BuildMenuTextLargeSelected" ] = surface.CreateFont()
-  surface.SetFontGlyphSet(
-    gBuildMenuInterface.m_hFonts[ "BuildMenuTextLargeSelected" ],
-    "DIN-Light",
-    64,
-    0,
-    5,
-    2,
-    bor( FONTFLAG_ANTIALIAS, FONTFLAG_ADDITIVE, FONTFLAG_CUSTOM )
-  )
+-- yep I'm making this the global think
+hook.add( "Think", "TestHook", function()
+  Timer.Check()
+  Net.Tick()
+end)
+
+function GM:ActivateClientUI()
+end
+
+function GM:AdjustEngineViewport( x, y, width, height )
+end
+
+function GM:CanShowSpeakerLabels()
+end
+
+-- this one is useless
+-- function GM:CreateDefaultPanels()
+-- end
+
+function GM:DrawHeadLabels( pPlayer )
+end
+
+function GM:GetPlayerTextColor( entindex, r, g, b )
+end
+
+function GM:HideClientUI()
+end
+
+function GM:HudViewportPaint( pElementName )
+  hook.call("HudViewportPaint", nil, pElementName)
+end
+
+function GM:KeyInput( down, keynum, pszCurrentBinding )
+end
+
+function GM:LevelInitPreEntity()
+end
+
+function GM:LevelInitPostEntity()
+end
+
+function GM:OnScreenSizeChanged( iOldWide, iOldTall )
+end
+
+function GM:ShouldDrawCrosshair()
+end
+
+function GM:ShouldDrawDetailObjects()
+end
+
+function GM:ShouldDrawEntity( pEnt )
+end
+
+function GM:ShouldDrawFog()
+end
+
+function GM:ShouldDrawLocalPlayer()
+   return true
+end
+
+function GM:ShouldDrawParticles()
+end
+
+function GM:ShouldDrawViewModel()
 end
