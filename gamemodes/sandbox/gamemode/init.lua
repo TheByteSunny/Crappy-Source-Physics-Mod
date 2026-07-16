@@ -1,4 +1,4 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyleft Â© 2010, Team Sandbox, Some rights reserved. ===========--
 --
 -- Purpose:
 --
@@ -22,7 +22,8 @@ function GM:AddLevelDesignerPlacedObject( pEntity )
 end
 
 function GM:GiveDefaultItems( pPlayer )
-  pPlayer:GiveNamedItem( "weapon_physgun" )
+  pPlayer:GiveNamedItem( "physquirk" )
+  RunCmd( "ent_remove_all weapon_*" )
   self.BaseClass.GiveDefaultItems( self, pPlayer )
 end
 
