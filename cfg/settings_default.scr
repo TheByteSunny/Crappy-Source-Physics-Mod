@@ -59,7 +59,7 @@ DESCRIPTION SERVER_OPTIONS
 	{
 		"Server Name"
 		{ STRING }
-		{ "Half-Life 2: Sandbox Ressurected" }
+		{ "CSPM" }
 	}
 
    "gamemode"
@@ -67,7 +67,7 @@ DESCRIPTION SERVER_OPTIONS
    		"Gamemode"
    		{
    			LIST
-   			"Sandbox" "rsandbox"
+   			"Sandbox" "sandbox"
    			"Deathmatch" "deathmatch"
    		}
  		{ "0" }
