@@ -1,8 +1,4 @@
---========== Copyleft © 2013, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose: Extends the panel type.
---
---===========================================================================--
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
 local type = type
 

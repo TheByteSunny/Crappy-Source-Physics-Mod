@@ -1,12 +1,10 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose: Extends the weapon type.
---
---===========================================================================--
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
 _R.CBaseCombatWeapon.__WeaponSound = _R.CBaseCombatWeapon.WeaponSound
 local WeaponSound = _R.CBaseCombatWeapon.WeaponSound
 local gpGlobals = gpGlobals
+
+require("hook")
 
 -- HACKHACK: We override this here, because for some reason scripted weapons
 -- don't properly play weapon sounds in singleplayer
@@ -28,4 +26,12 @@ function _R.CBaseCombatWeapon.WeaponSound( self, sound_type, soundtime )
       self:EmitSound( shootsound ); 
     end
   -- end
+end
+
+if _R.CBaseCombatWeapon.Crosshair == false then
+   hook.Add("HudElementShouldDraw", "Stuff", function(name)
+         if name == "CHudCrosshair" then
+            return nil
+         end
+   end)
 end

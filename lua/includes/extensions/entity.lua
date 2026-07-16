@@ -1,8 +1,4 @@
---========== Copyleft © 2013, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose: Extends the entity type.
---
---===========================================================================--
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
 local type = type
 
@@ -20,4 +16,8 @@ if _DEBUG then
 end
 
   return hEntity;
+end
+
+if not NEXTBOT then
+   NEXTBOT = ToBaseEntity( ENT or NEXTBOT )
 end
