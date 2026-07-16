@@ -73,7 +73,7 @@ Scheme
 		"Main.Title2.Color"	"255 255 255 180"
 
 		// Top-left corner of the menu on the main screen
-		"Main.Menu.X"		"76"
+		"Main.Menu.X"		"400"
 		"Main.Menu.Y"		"240"
 
 		// Blank space to leave beneath the menu on the main screen
