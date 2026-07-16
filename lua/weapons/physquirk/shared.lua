@@ -38,10 +38,10 @@ return tr
 
 end
 
-SWEP.PrintName = "[BASE] Physics Gun"
+SWEP.PrintName = "PHYSQUIRK"
 
-SWEP.ViewModel = "models/weapons/v_superphyscannon.mdl"
-SWEP.WorldModel = "models/weapons/w_physics.mdl"
+SWEP.ViewModel = "models/weapons/v_pistol.mdl"
+SWEP.WorldModel = "models/weapons/w_pistol.mdl"
 
 SWEP.Slot = 0
 SWEP.SlotPos = 1
@@ -133,6 +133,25 @@ function SWEP:PrimaryAttack()
 
 end
 
+function SWEP:DropHeldEntity()
+
+    if not IsValid(self.HeldEntity) then
+        self.HeldEntity = nil
+        return
+    end
+
+    self.HeldEntity:SetMoveType(self.StoredMoveType or 6)
+    self.HeldEntity:SetAbsVelocity(Vector(0,0,0))
+    self.HeldEntity:WakeRestingObjects()
+
+    self.HeldEntity = nil
+    self.StoredMoveType = nil
+    self.GrabLocalPos = nil
+    self.PhysBone = 0
+    self.Frozen = false
+
+end
+
 function SWEP:SecondaryAttack()
 end
 
@@ -155,12 +174,7 @@ end
 
 function SWEP:Holster()
 
-    if IsValid(self.HeldEntity) then
-        self.HeldEntity:SetMoveType(self.StoredMoveType or 6)
-        self.HeldEntity:WakeRestingObjects()
-    end
-
-    self.HeldEntity = nil
+    self:DropHeldEntity()
 
     return true
 end
@@ -191,14 +205,7 @@ function SWEP:ItemPostFrame()
 
     if not ReturnFlags(ply.m_nButtons, IN.ATTACK) then
 
-        if not self.Frozen then
-            ent:SetMoveType(self.StoredMoveType or 6)
-            ent:SetAbsVelocity(Vector(0,0,0))
-            ent:WakeRestingObjects()
-            ent:SetRenderColor(255, 255, 255, 255)
-        end
-
-        self.HeldEntity = nil
+        self:DropHeldEntity()
 
         return
     end
@@ -273,7 +280,6 @@ function SWEP:ItemPostFrame()
         )
 
     ent:WakeRestingObjects()
-    ent:SetRenderColor(0, 230, 255, 255)
 
 end
 
