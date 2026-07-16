@@ -1,8 +1,4 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose: Hook implementation.
---
---===========================================================================--
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
 local pairs = pairs
 local Warning = dbg.Warning
@@ -15,24 +11,15 @@ module( "hook" )
 local tHooks = {}
 local tReturns = {}
 
--------------------------------------------------------------------------------
--- Purpose: Adds a hook to the given GameRules function
--- Input  : strEventName - Name of the internal GameRules method
---     	    strHookName - Name of the hook
---          pFn - pointer to function
--- Output :
--------------------------------------------------------------------------------
 function add( strEventName, strHookName, pFn )
   tHooks[ strEventName ] = tHooks[ strEventName ] or {}
   tHooks[ strEventName ][ strHookName ] = pFn
 end
 
--------------------------------------------------------------------------------
--- Purpose: Called by the engine to call a GameRules hook
--- Input  : strEventName - Name of the internal GameRules method
---          tGamemode - Table of the current gamemode
--- Output :
--------------------------------------------------------------------------------
+function Add( strEventName, strHookName, pFn )
+    return add( strEventName, strHookName, pFn )
+end
+
 function call( strEventName, tGamemode, ... )
   local tHooks = tHooks[ strEventName ]
   if ( tHooks ~= nil ) then
@@ -68,12 +55,10 @@ function call( strEventName, tGamemode, ... )
   end
 end
 
--------------------------------------------------------------------------------
--- Purpose: Returns all of the registered hooks or only hooks pertaining to a
---          specific event
--- Input  : strEventName - Name of the internal GameRules method
--- Output : table
--------------------------------------------------------------------------------
+function Run( strEventName, tGamemode, ... )
+    return call( strEventName, tGamemode, ... )
+end
+
 function gethooks( strEventName )
   if ( strEventName ) then
     return tHooks[ strEventName ]
@@ -81,14 +66,16 @@ function gethooks( strEventName )
   return tHooks
 end
 
--------------------------------------------------------------------------------
--- Purpose: Removes a hook from the list of registered hooks
--- Input  : strEventName - Name of the internal GameRules method
---          strHookName - Name of the hook
--- Output :
--------------------------------------------------------------------------------
+function GetTable( strEventName )
+    return gethooks( strEventName )
+end
+
 function remove( strEventName, strHookName )
   if ( tHooks[ strEventName ][ strHookName ] ) then
     tHooks[ strEventName ][ strHookName ] = nil
   end
+end
+
+function Remove( strEventName, strHookName )
+     return remove( strEventName, strHookName )
 end

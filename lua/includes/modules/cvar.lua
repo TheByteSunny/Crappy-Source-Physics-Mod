@@ -1,8 +1,4 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose: Implements global change callbacks for ConVars.
---
---===========================================================================--
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
 local pairs = pairs
 local Warning = dbg.Warning

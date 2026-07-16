@@ -1,20 +1,16 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose: Gamemode handling.
---
---===========================================================================--
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
-_BASE_GAMEMODE = "deathmatch"
+-- finally fixed
 
-require( "hook" )
+_BASE_GM = "deathmatch" -- I can't put sandbox here
 
-local hook = hook
+local hook = hook or require( "hook" )
 local table = table
 local print = print
-local _BASE_GAMEMODE = _BASE_GAMEMODE
+local _BASE_GAMEMODE = _BASE_GM
 local _G = _G
 
-module( "gamemode" )
+module( "gamemode", package.seeall )
 
 local tGamemodes = {}
 
@@ -23,7 +19,7 @@ local tGamemodes = {}
 -- Input  : strEventName - Name of the internal GameRules method
 -- Output :
 -------------------------------------------------------------------------------
-function call( strEventName, ... )
+function call( strEventName, ... ) -- so I can use this for timer... hmmm...
   if ( _G._GAMEMODE and _G._GAMEMODE[ strEventName ] == nil ) then
     return false
   end

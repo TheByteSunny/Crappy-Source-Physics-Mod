@@ -1,39 +1,33 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
---
--- Purpose: ConCommand implementation.
---
---===========================================================================--
+--- Copyright © 2026, YourLocalCappy, all rights deserved ---
 
 local ConCommand = ConCommand
 local Warning = dbg.Warning
 local tostring = tostring
 local pcall = pcall
+local tonumber = tonumber
+local cvar = require("cvar")
 
-module( "concommand" )
+module( "concommand", package.seeall )
 
 local bError, strError
+local function isfunction(v) return type(v) == "function" end
+local function isstring(v) return type(v) == "string" end
+local function isnumber(v) return type(v) == "number" end
 local tFnCommandCallbacks = {}
 
--------------------------------------------------------------------------------
--- Purpose: Creates a ConCommand
--- Input  : pName - Name of the ConCommand
---          callback - Callback function for the ConCommand
---          pHelpString - Help string to be displayed
---          flags - Flags of the ConCommand
--- Output :
--------------------------------------------------------------------------------
 function Create( pName, callback, pHelpString, flags )
   tFnCommandCallbacks[ pName ] = callback
   ConCommand( pName, pHelpString, flags )
 end
 
--------------------------------------------------------------------------------
--- Purpose: Called by the game to dispatch a ConCommand
--- Input  : pPlayer - Player who ran the ConCommand
---          pCmd - Name of the ConCommand
---          ArgS - All args that occur after the 0th arg, in string form
--- Output : boolean
--------------------------------------------------------------------------------
+function Add( pName, callback )
+  if not isstring(pName) then 
+    return
+  end
+
+  Create( pName, callback, nil, 0 )
+end
+
 function Dispatch( pPlayer, pCmd, ArgS )
   local fnCommandCallback = tFnCommandCallbacks[ pCmd ]
   if ( not fnCommandCallback ) then
@@ -47,11 +41,6 @@ function Dispatch( pPlayer, pCmd, ArgS )
   end
 end
 
--------------------------------------------------------------------------------
--- Purpose: Removes a ConCommand callback
--- Input  : pName - Name of the ConCommand
--- Output :
--------------------------------------------------------------------------------
 function Remove( pName )
   if ( tFnCommandCallbacks[ pName ] ) then
     tFnCommandCallbacks[ pName ] = nil
